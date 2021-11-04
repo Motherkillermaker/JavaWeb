@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单的显示</title>
+</head>
+<body>
+<!--需求 1:
+      创建一个个人信息注册的表单界面。
+      包含用户名，密码，确认密码。性别（单选），兴趣爱好（多选），
+      国籍（下拉列表隐藏域，自我评价（多行文本域）。重置，提交-->
+
+<!--
+
+form 标签就是表单
+      input type=text 是文件输入框 value 设置默认显示内容
+      input type=password 是密码输入框 value 设置默认显示内容
+      input type=radio 是单选框 name 属性可以对其进行分组 checked="checked"表示默认选中
+      input type=checkbox 是复选框 checked="checked"表示默认选中
+      input type=reset 是重置按钮 value 属性修改按钮上的文本
+      input type=submit 是提交按钮 value 属性修改按钮上的文本
+      input type=button 是按钮 value 属性修改按钮上的文本
+      input type=file 是文件上传域
+      input type=hidden 是隐藏域 当我们要发送某些信息，而这些信息，不需要用户参与，就可以使用隐藏域
+     （提交的时候同时发送给服务器）
+
+
+      select 标签是下拉列表框
+      option 标签是下拉列表框中的选项 selected="selected"设置默认选中
+      textarea 表示多行文本输入框 （起始标签和结束标签中的内容是默认值）
+          rows 属性设置可以显示几行的高度
+          cols 属性设置每行可以显示几个字符宽度
+
+<!-                       表单提交细节
+    form 标签是表单标签
+        action 属性设置提交的服务器地址
+        method 属性设置提交的方式 GET(默认值)或 POST
+
+    表单提交的时候，数据没有发送给服务器的三种情况：
+        1、表单项没有 name 属性值
+        2、单选、复选（下拉列表中的 option 标签）都需要添加 value 属性，以便发送给服务器
+        3、表单项不在提交的 form 标签中
+
+    GET 请求的特点是：
+        1、浏览器地址栏中的地址是：action 属性[+?+请求参数]
+        请求参数的格式是：name=value&name=value
+        2、不安全
+        3、它有数据长度的限制
+
+    POST 请求的特点是：
+        1、浏览器地址栏中只有 action 属性值
+        2、相对于 GET 请求要安全
+        3、理论上没有数据长度的限制
+-->
+
+
+<!--添加表格后的表单(将表单的字段放在单元格中)-->
+<form action="http://www.baidu.com" method="get">
+  <input type="hidden" name="action" value="login">
+  <h1 align="center">用户注册</h1>
+  <table align="center">
+    <tr>
+      <td>用户名称：</td>
+      <td>
+        <input type="text" value="默认值" name="username"/>
+      </td>
+    </tr>
+
+    <tr>
+      <td>用户密码：</td>
+      <td>
+        <input type="password" value="默认密码" name="password"/>
+      </td>
+    </tr>
+
+    <tr>
+      <td>确认密码：</td>
+      <td>
+        <input type="password" value="默认密码" name="password"/>
+      </td>
+    </tr>
+
+    <tr>
+      <td>性别：</td>
+      <td>
+        <input type="radio" name="sex" checked="checked" value="boy"/>男
+        <input type="radio" name="sex" value="girl"/>女
+      </td>
+    </tr>
+
+    <tr>
+      <td>兴趣爱好：</td>
+      <td>
+        <input type="checkbox" checked="checked" name="hobby" value="java"/>java
+        <input type="checkbox" value="python"/>python
+        <input type="checkbox" value="go"/>go
+      </td>
+    </tr>
+
+    <tr>
+      <td>国籍：</td>
+      <td>
+        <select name="nation">
+          <option value="none">-----请选择国籍-----</option>
+          <option selected="selected" value="China">中国</option>
+          <option value="America">美国</option>
+          <option value="Japan">日本</option>
+          <option value="Korea">韩国</option>
+          <option value="Vietnam">越南</option>
+          <option value="Malaysia">马来西亚</option>
+          <option value="Australia">澳大利亚</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr>
+      <td>自我评价：</td>
+      <td>
+        <textarea rows="10" cols="20" name="desc">我才是默认值</textarea>
+      </td>
+    </tr>
+
+    <tr>
+      <td><input type="reset" value="reset"></td>
+      <td align="center"><input type="submit" value="submit"></td>
+    </tr>
+
+  </table>
+
+
+
+<!--原始表单-->
+  用户名称：<input type="text" value="默认值"/><br/>
+  用户密码：<input type="password" value="默认密码"/><br/>
+  确认密码：<input type="password" value="默认密码"/><br/>
+  性别：<input type="radio" name="sex" checked="checked"/>男 <input type="radio" name="sex"/>女 <br/>
+  兴趣爱好：<input type="checkbox" checked="checked"/>java <input type="checkbox"/>python <input type="checkbox"/>go <br/>
+  国籍：<select>
+        <option>-----请选择国籍-----</option>
+        <option selected="selected">中国</option>
+        <option>美国</option>
+        <option>日本</option>
+        <option>韩国</option>
+        <option>越南</option>
+        <option>马来西亚</option>
+        <option>澳大利亚</option>
+       </select><br/>
+  自我评价：<textarea rows="10" cols="20">我才是默认值</textarea><br/>
+  <input type="reset" value="reset">
+  <input type="submit" value="submit">
+  <input type="button" value="abc">
+  <input type="file"><br/>
+  <input type="hidden" name="abc" value="abc">
+</form>
+
+
+</body>
+</html>
